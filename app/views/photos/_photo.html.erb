@@ -1,0 +1,21 @@
+<div id="<%= dom_id(photo) %>" class="card mb-4">
+  <div class="card-body">
+    <!-- User Information -->
+    <p class="card-text">
+      <strong>User:</strong> <%= photo.user.name %>
+    </p>
+
+    <div class="mb-3">
+      <strong>Photo:</strong>
+      <div class="d-flex justify-content-center">
+        <%= image_tag photo.image, alt: "Photo image", class: "img-fluid", style: "max-width: 200px;" %> 
+      </div>
+    </div>
+
+    <p class="card-text">
+      <strong>Descripcion:</strong> <%= photo.caption %> 
+    </p>
+  </div>
+</div>
+
+

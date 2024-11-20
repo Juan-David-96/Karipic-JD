@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Photos" %>
+
+<h1>Photos</h1>
+
+<div id="photos">
+  <% @photos.each do |photo| %>
+    <%= render photo %>
+    <p>
+      <%= link_to "Show this photo", photo, class: 'btn btn-primary' %>
+    </p>
+  <% end %>
+</div>
+
+
+  <% if current_user.karina? %>
+    <div class="mb-2 d-flex justify-content-start">
+      <%= link_to "New photo", new_photo_path, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
