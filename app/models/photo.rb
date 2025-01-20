@@ -4,5 +4,6 @@ class Photo < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :caption, presence: true
-  validates :image, presence: true 
+  validates :image, presence: true
+  validates :title, presence: true
 end

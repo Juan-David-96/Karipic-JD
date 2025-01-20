@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :photos, dependent: :destroy 
   has_many :comments
 
-  validates :images, presence: true
+  #validates :images, presence: true
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
 end

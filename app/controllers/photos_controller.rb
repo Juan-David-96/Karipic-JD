@@ -69,6 +69,6 @@ class PhotosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def photo_params
-      params.require(:photo).permit(:caption, :image)
+      params.require(:photo).permit(:caption, :image, :title)
     end
 end

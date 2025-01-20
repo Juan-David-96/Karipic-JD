@@ -1,17 +1,3 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
-# db/seeds.rb
-
-# db/seeds.rb
-
 # Elimina cualquier usuario existente con el mismo email
 User.find_by(email: 'karina@karipic.com')&.destroy
 
@@ -25,11 +11,17 @@ karina = User.create!(
 )
 
 # Adjuntar la foto de perfil a Karina usando ActiveStorage
-karina.photo.attach(
-  io: File.open(Rails.root.join('app', 'assets', 'images', 'karina_profile.webp')),
-  filename: 'karina_profile.webp'
-)
+image_path = Rails.root.join('app', 'assets', 'images', 'karina_profile.webp')
 
-# Verifica que el usuario y su foto hayan sido creados correctamente
-puts "Karina created with photo: #{karina.photo.attached?}"
+if File.exist?(image_path)
+  # Adjuntar la foto de perfil a Karina usando ActiveStorage
+  karina.images.attach(
+    io: File.open(image_path),
+    filename: 'karina_profile.webp',
+    content_type: 'image/webp'
+  )
 
+  puts "Usuario Karina creado con éxito y foto de perfil adjunta."
+else
+  puts "Error: La imagen 'karina_profile.webp' no se encuentra en la ruta especificada."
+end

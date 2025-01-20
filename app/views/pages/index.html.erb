@@ -1,2 +1,37 @@
-<h1>Principal</h1>
-<%= link_to "Post", photos_path, class: 'btn btn-outline-secondary m-1' %>
+<div class="container mt-4">
+  <!-- Título de la página -->
+  <h1 class="text-center mb-4">Explora las Publicaciones</h1>
+
+  <!-- Botón para gestionar publicaciones (solo visible para Karina) -->
+  <% if current_user&.karina? %>
+    <div class="text-center mb-4">
+      <%= link_to "Nueva Publicación", new_photo_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <!-- Galería de publicaciones -->
+  <div class="row">
+    <% @photos.each do |photo| %>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm">
+          <!-- Imagen de la publicación -->
+          <%= image_tag photo.image, class: "card-img-top", alt: photo.title %>
+          <div class="card-body">
+            <!-- Título de la publicación -->
+            <h5 class="card-title"><%= photo.title %></h5>
+            <!-- Descripción corta -->
+            <p class="card-text"><%= truncate(photo.caption, length: 100) %></p>
+            <!-- Enlace a la publicación -->
+            <%= link_to "Ver más", photo_path(photo), class: "btn btn-outline-primary btn-sm" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Paginación -->
+  <div class="d-flex justify-content-center">
+    <%= paginate @photos %>
+  </div>
+</div>
+
