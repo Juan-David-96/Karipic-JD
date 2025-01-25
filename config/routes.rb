@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   { sessions: 'users/sessions', 
   registrations: 'users/registrations' }
   get "pages/index"
+  get 'my_comments', to: 'comments#my_comments', as: 'my_comments'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

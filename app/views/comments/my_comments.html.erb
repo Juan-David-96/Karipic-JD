@@ -1,0 +1,22 @@
+<h1>Mis Comentarios</h1>
+
+<% if @comments.any? %>
+  <div class="row justify-content-center">
+    <% @comments.each do |comment| %>
+      <div class="col-md-5 mb-4 ">
+        <div class="card">
+          <div class="card-body justify-center">
+            <h5 class="card-title">Publicación: 
+              <%= link_to comment.photo.title, photo_path(comment.photo) %>
+            </h5>
+            <p class="card-text"><strong>Comentario:</strong> <%= comment.content %></p>
+            <p class="text-muted">Publicado el: <%= comment.created_at.strftime("%d/%m/%Y %H:%M") %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No has hecho ningún comentario aún.</p>
+  <%= link_to "Interactua con nuestras fotos!!", pages_index_path, class: "btn btn-primary" %>
+<% end %>

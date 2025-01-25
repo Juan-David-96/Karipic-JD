@@ -3,7 +3,7 @@
         <%= link_to 'KARIPIC', pages_index_path, class: "logo" %>
         <div  class="navbar_saludo">
                     <% if user_signed_in? %>
-                        Hola <%= current_user.email %>
+                        Hola <%= current_user.name %>
                     <% else %>  
                         Dale registrate o conectate
                     <% end %>
@@ -20,8 +20,7 @@
                     <ul class="dropdown-menu dropdown-menu-end">
                         <% if user_signed_in? %>
                              <li class="nav-item">
-                             <%# 
-                                 <%= link_to 'Tus reacciones', my_reactions_path, class: 'dropdown-item' %>
+                                 <%= link_to 'Mis Comentarios', my_comments_path, class: 'dropdown-item' %>
                             </li>
                             <li>
                                 <%= button_to 'Cerrar sesión', destroy_user_session_path, class: 'dropdown-item',

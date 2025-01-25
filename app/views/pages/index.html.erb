@@ -15,12 +15,12 @@
       <div class="col-md-4 mb-4">
         <div class="card shadow-sm">
           <!-- Imagen de la publicación -->
-          <%= image_tag photo.image, class: "card-img-top", alt: photo.title %>
+          <%= image_tag photo.image, class: "card-img-top", alt: photo.title, style: "width: 100%; height: 200px; object-fit: cover;" %>
           <div class="card-body">
             <!-- Título de la publicación -->
             <h5 class="card-title"><%= photo.title %></h5>
             <!-- Descripción corta -->
-            <p class="card-text"><%= truncate(photo.caption, length: 100) %></p>
+            <p class="card-text"><%= truncate(photo.caption, length: 50) %></p>
             <!-- Enlace a la publicación -->
             <%= link_to "Ver más", photo_path(photo), class: "btn btn-outline-primary btn-sm" %>
           </div>

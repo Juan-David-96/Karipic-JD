@@ -56,6 +56,10 @@ class CommentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def my_comments
+    @comments = current_user.comments.includes(:photo)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

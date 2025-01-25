@@ -27,7 +27,7 @@
 <ul class="list-group">
   <% @photo.comments.each do |comment| %>
     <li class="list-group-item">
-      <%= comment.content %>    
+      <strong><%= comment.user.name %>:</strong> <%= comment.content %>
       <% if user_signed_in? && (current_user.id == comment.user_id || current_user.role == 'admin' || current_user.role == 'karina') %>
         <%= button_to "Eliminar", [comment.photo, comment], method: :delete, data: { confirm: "¿Estás seguro de que deseas eliminar este comentario?" }, class: "btn btn-danger btn-sm float-end" %>
       <% end %>
